@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.senai.produto.ProdutoController;
+
 public class ProgramaPrincipal {
 
 	public static void main(String[] args) {
 		List<Pessoa> pessoas = new ArrayList<>();
+		List<Produto> produtos = new ArrayList<>();
 
 		PessoaController pessoaController = new PessoaController();
-
+		ProdutoController produtoController = new ProdutoController();
+		
 		boolean sair = false;
 
 		do {
@@ -27,7 +31,7 @@ public class ProgramaPrincipal {
 				pessoaController.listarPessoas(pessoas);
 
 				break;
-
+				
 			default:
 				System.out.println("Função inválida.");
 				break;
