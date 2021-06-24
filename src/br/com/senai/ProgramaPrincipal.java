@@ -3,6 +3,8 @@ package br.com.senai;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.senai.loja.Venda;
+import br.com.senai.loja.VendaController;
 import br.com.senai.pessoa.Pessoa;
 import br.com.senai.pessoa.PessoaController;
 import br.com.senai.produto.Produto;
@@ -13,6 +15,7 @@ public class ProgramaPrincipal {
 	public static void main(String[] args) {
 		List<Pessoa> pessoas = new ArrayList<>();
 		List<Produto> produtos = new ArrayList<>();
+		List<Venda> vendas = new ArrayList<Venda>();
 
 		Produto produto = new Produto(
 				"Abacate",
@@ -24,46 +27,29 @@ public class ProgramaPrincipal {
 
 		PessoaController pessoaController = new PessoaController();
 		ProdutoController produtoController = new ProdutoController();
-
+		VendaController vendaController = new VendaController();
+		
 		boolean sair = false;
 
 		do {
+			
 			pessoaController.menu();
 
 			int opcao = pessoaController.leOpcao();
-
+			
 			switch (opcao) {
 			case 1:
-				pessoas.add(pessoaController.cadastrarPessoa());
+				pessoaController.menu(pessoas);
 				break;
-
 			case 2:
-				pessoaController.listarPessoas(pessoas);
+				produtoController.menu(produtos);
 				break;
-
 			case 3:
-				produtos.add(produtoController.cadastrarProduto());
+				vendaController.menu(vendas);
 				break;
-
 			case 4:
-				produtoController.listarProdutos(produtos);
-				break;
-			case 5:
-				produtoController.editarProduto(produtos);
-				break;
-			case 6:
-				pessoaController.editarPessoa(pessoas);
-				break;
-			case 7:
-				break;
-			case 8:
-				produtoController.excluirProduto(produtos);		
-				break;
-
-			case 9:
 				sair = true;
 				break;
-
 			default:
 				System.out.println("Opção inválida!");
 				break;

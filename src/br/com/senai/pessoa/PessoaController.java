@@ -21,20 +21,39 @@ public class PessoaController {
 
 	public void menu() {
 		System.out.println("\n--- MENU ---");
-		System.out.println("1) Cadastrar pessoa");
-		System.out.println("2) Listar pessoas cadastradas");
-		System.out.println("3) Cadastrar novo produto");
-		System.out.println("4) Listar produtos cadastrados");
-		System.out.println("5) Editar produto");
-		System.out.println("6) Editar pessoas");
-		System.out.println("7) Excluir pessoas");
-		System.out.println("8) Excluir produto");
-		System.out.println("9) Sair do sistema");
+		System.out.println("1) Processo de Pessoas");
+		System.out.println("2) Processo de Produtos");
+		System.out.println("3) Processo de Vendas");
+		System.out.println("4) Sair do sistema");
 		System.out.println("-------------------");
 	}
 
+	public void menu(List<Pessoa> pessoas) {
+		System.out.println("--- PROCESSO DE PESSOAS ---");
+		System.out.println("1) Cadastrar uma nova pessoa");
+		System.out.println("2) Editar pessoas cadastradas");
+		System.out.println("3) Listar pessoas cadastradas");
+		System.out.println("------------------------------");
+		System.out.print("> ");
+		int opcaoPes = tec.nextInt();
+		
+		switch(opcaoPes) {
+		case 1:
+			cadastrarPessoa();
+			break;
+		case 2:
+			editarPessoa();
+			break;
+		default:
+			System.out.println("Opção inválida!");
+			break;
+		
+		}
+	}
+	
 	public Pessoa cadastrarPessoa() {
 		Pessoa pessoa = new Pessoa();
+		
 
 		System.out.println("--- CADASTRAR PESSOA ---");
 		System.out.print("Informe o nome: ");
@@ -250,7 +269,7 @@ public class PessoaController {
 		
 		case 8:
 			System.out.println("--- EDITAR NOME DA CIDADE ---");
-			System.out.println("Informe o novo nome da cidade: ");
+			System.out.print("Informe o novo nome da cidade: ");
 			pessoa.setNomeDaCidade(tec.next());
 			
 			pessoa.setNome(pessoas.get(idPessoa).getNome());
@@ -270,7 +289,7 @@ public class PessoaController {
 			
 		case 9:
 			System.out.println("--- EDITAR NOME DA RUA ---");
-			System.out.println("Informe o novo nome da rua: ");
+			System.out.print("Informe o novo nome da rua: ");
 			pessoa.setNomeDaRua(tec.next());
 			
 			pessoa.setNome(pessoas.get(idPessoa).getNome());
@@ -290,7 +309,7 @@ public class PessoaController {
 			
 		case 10:
 			System.out.println("--- EDITAR NOME DO BAIRRO ---");
-			System.out.println("Informe o novo nome do bairro: ");
+			System.out.print("Informe o novo nome do bairro: ");
 			pessoa.setNomeDoBairro(tec.next());
 			
 			pessoa.setNome(pessoas.get(idPessoa).getNome());
@@ -311,7 +330,7 @@ public class PessoaController {
 			
 		case 11:
 			System.out.println("--- EDITAR COMPLEMENTO ---");
-			System.out.println("Informe o novo complemento: ");
+			System.out.print("Informe o novo complemento: ");
 			pessoa.setComplemento(tec.next());
 			
 			pessoa.setNome(pessoas.get(idPessoa).getNome());
@@ -330,6 +349,27 @@ public class PessoaController {
 			break;
 			
 		case 12:
+			System.out.println("--- EDITAR NÚMERO ---");
+			System.out.println("Informe o novo número: ");
+			pessoa.setNumero(tec.next());
+			
+			pessoa.setNome(pessoas.get(idPessoa).getNome());
+			pessoa.setAnoDeNascimento(pessoas.get(idPessoa).getAnoDeNascimento());
+			pessoa.setSiglaDoPais(pessoas.get(idPessoa).getSiglaDoPais());
+			pessoa.setNomeDopais(pessoas.get(idPessoa).getNomeDopais());
+			pessoa.setNomeDoEstado(pessoas.get(idPessoa).getNomeDoEstado());
+			pessoa.setUf(pessoas.get(idPessoa).getUf());
+			pessoa.setNomeDaCidade(pessoas.get(idPessoa).getComplemento());
+			pessoa.setNomeDaRua(pessoas.get(idPessoa).getNomeDaRua());
+			pessoa.setNomeDoBairro(pessoas.get(idPessoa).getNomeDoBairro());
+			pessoa.setComplemento(pessoas.get(idPessoa).getComplemento());
+
+			pessoas.set(idPessoa, pessoa);
+			
+			break;
+			
+		default:
+			System.out.println("Opção inválida!");
 			break;
 		}		
 		return pessoas;

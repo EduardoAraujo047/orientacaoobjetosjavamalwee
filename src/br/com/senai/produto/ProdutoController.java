@@ -10,6 +10,10 @@ public class ProdutoController {
 	public ProdutoController() {
 		tec = new Scanner(System.in);
 	}
+	
+	public void menu(List<Produto> produtos) {
+		
+	}
 
 	public Produto cadastrarProduto() {
 		Produto produto = new Produto();
