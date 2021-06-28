@@ -21,7 +21,7 @@ public class VendaController {
 	}
 
 	public int leOpcao() {
-		System.out.println("> ");
+		System.out.print("> ");
 		return tec.nextInt();
 	}
 
@@ -85,13 +85,35 @@ public class VendaController {
 		
 		return venda;
 	}
-	public void menu(List <Venda> vendas) {
-		System.out.println("---------- MENU ------------");
-		System.out.println("1) Cadastrar venda");
-		System.out.println("2) Listar venda");
-		System.out.println("----------------------------");
+	public void menu(List <Venda> vendas, List<Produto> produtos, List<Pessoa> pessoas) {
+		
+		boolean sair = false;
+		
+		do {
+			System.out.println("+---------- MENU ---------+");
+			System.out.println("|1) Cadastrar venda       |");
+			System.out.println("|2) Listar vendas         |");
+			System.out.println("|3) Voltar                |");
+			System.out.println("+-------------------------+");
+		
+			int opcao = leOpcao();
+		
+			switch(opcao){
+			case 1:
+				vendas.add(cadastrarVenda(produtos, pessoas));
+				break;
+			case 2:
+				listarVenda(vendas);
+				break;
+			case 3:
+				sair = true;
+				break;
+			default:
+				System.out.println("Opção inválida!");
+				break;
+			}
 
+		} while(!sair);	
 
 	}
-
 }
