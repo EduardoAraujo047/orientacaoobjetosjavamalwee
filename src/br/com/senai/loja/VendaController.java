@@ -24,13 +24,6 @@ public class VendaController {
 		System.out.println("> ");
 		return tec.nextInt();
 	}
-	
-	public void menu(List<Venda> vendas) {
-		System.out.println("--- MENU DE VENDAS ---");
-		System.out.println("1) Cadastrar nova venda");
-		System.out.println("2) Listas vendas");
-		System.out.println("-----------------------");
-	}
 
 	public List<Venda> listarVenda(List<Venda> vendas) {
 
@@ -91,6 +84,14 @@ public class VendaController {
 		venda.setValor(produto.getValorUnitarioDoProduto() * venda.getQuantidade());
 		
 		return venda;
+	}
+	public void menu(List <Venda> vendas) {
+		System.out.println("---------- MENU ------------");
+		System.out.println("1) Cadastrar venda");
+		System.out.println("2) Listar venda");
+		System.out.println("----------------------------");
+
+
 	}
 
 }

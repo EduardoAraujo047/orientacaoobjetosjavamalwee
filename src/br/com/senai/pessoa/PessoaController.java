@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.senai.endereco.Endereco;
-import br.com.senai.pessoa.Pessoa;
 
 public class PessoaController {
 
@@ -19,30 +18,24 @@ public class PessoaController {
 		return tec.nextInt();
 	}
 
-	public void menu() {
-		System.out.println("\n--- MENU ---");
-		System.out.println("1) Processo de Pessoas");
-		System.out.println("2) Processo de Produtos");
-		System.out.println("3) Processo de Vendas");
-		System.out.println("4) Sair do sistema");
-		System.out.println("-------------------");
-	}
-
 	public void menu(List<Pessoa> pessoas) {
 		System.out.println("--- PROCESSO DE PESSOAS ---");
 		System.out.println("1) Cadastrar uma nova pessoa");
 		System.out.println("2) Editar pessoas cadastradas");
 		System.out.println("3) Listar pessoas cadastradas");
 		System.out.println("------------------------------");
-		System.out.print("> ");
-		int opcaoPes = tec.nextInt();
 		
-		switch(opcaoPes) {
+		int opcao = leOpcao();
+		
+		switch(opcao) {
 		case 1:
-			cadastrarPessoa();
+			cadastrarPessoa(pessoas);
 			break;
 		case 2:
-			editarPessoa();
+			editarPessoa(pessoas);
+			break;
+		case 3:
+			listarPessoas(pessoas);
 			break;
 		default:
 			System.out.println("Opção inválida!");
@@ -51,7 +44,7 @@ public class PessoaController {
 		}
 	}
 	
-	public Pessoa cadastrarPessoa() {
+	public Pessoa cadastrarPessoa(List<Pessoa> pessoas) {
 		Pessoa pessoa = new Pessoa();
 		
 
@@ -406,4 +399,18 @@ public class PessoaController {
 		Endereco endereco = new Endereco();
 		return endereco;
 	}
+	public void menu() {
+		System.out.println("---------- MENU ------------");
+		System.out.println("1) Cadastrar pessoa          ");
+		System.out.println("2) Listar pessoas cadastradas");
+		System.out.println("3) Cadastrar produtos");
+		System.out.println("4) Listar produtos");
+		System.out.println("5) Editar produto");
+		System.out.println("6) Excluir produto");
+		System.out.println("7) Editar pessoa");
+		System.out.println("8) Excluir pessoa");
+		System.out.println("9) Sair do sistema");
+		System.out.println("------------------------------");
+	}
+
 }

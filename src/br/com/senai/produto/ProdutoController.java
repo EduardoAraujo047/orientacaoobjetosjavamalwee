@@ -10,11 +10,12 @@ public class ProdutoController {
 	public ProdutoController() {
 		tec = new Scanner(System.in);
 	}
-	
-	public void menu(List<Produto> produtos) {
-		
-	}
 
+	public int leOpcao() {
+		System.out.println("> ");
+		return tec.nextInt();
+	}
+	
 	public Produto cadastrarProduto() {
 		Produto produto = new Produto();
 
@@ -138,6 +139,37 @@ public class ProdutoController {
 		}
 		
 		produtos.remove(idProduto);
+	}
+	
+	public void menu(List <Produto> produtos) {
+		System.out.println("\n---------- MENU ------------");
+		System.out.println("|1) Cadastrar produtos");
+		System.out.println("|2) Listar produtos");
+		System.out.println("|3) Editar produto");
+		System.out.println("|4) Excluir produto");
+		System.out.println("------------------------------");
+
+		int opcao = leOpcao();
+
+		switch(opcao) {
+		case 1:
+			cadastrarProduto();
+			break;
+
+		case 2:
+			listarProdutos(produtos);
+			break;
+
+		case 3:
+			editarProduto(produtos);
+			break;
+
+		case 4:
+			excluirProduto(produtos);
+			break;
+
+		}
+
 	}
 
 }
