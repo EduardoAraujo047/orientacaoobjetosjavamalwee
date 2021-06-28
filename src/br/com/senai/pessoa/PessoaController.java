@@ -19,29 +19,42 @@ public class PessoaController {
 	}
 
 	public void menu(List<Pessoa> pessoas) {
-		System.out.println("--- PROCESSO DE PESSOAS ---");
-		System.out.println("1) Cadastrar uma nova pessoa");
-		System.out.println("2) Editar pessoas cadastradas");
-		System.out.println("3) Listar pessoas cadastradas");
-		System.out.println("------------------------------");
 		
-		int opcao = leOpcao();
+		boolean sair = false;
 		
-		switch(opcao) {
-		case 1:
-			cadastrarPessoa(pessoas);
-			break;
-		case 2:
-			editarPessoa(pessoas);
-			break;
-		case 3:
-			listarPessoas(pessoas);
-			break;
-		default:
-			System.out.println("Opção inválida!");
-			break;
+		do {
+			System.out.println("+----- PROCESSO DE PESSOAS -----+");
+			System.out.println("|1) Cadastrar uma nova pessoa   |");
+			System.out.println("|2) Editar pessoas cadastradas  |");
+			System.out.println("|3) Listar pessoas cadastradas  |");
+			System.out.println("|4) Excluir pessoas             |");
+			System.out.println("|5) Voltar                      |");
+			System.out.println("+-------------------------------+");
 		
-		}
+			int opcao = leOpcao();
+		
+			switch(opcao) {
+			case 1:
+				pessoas.add(cadastrarPessoa(pessoas));
+				break;
+			case 2:
+				editarPessoa(pessoas);
+				break;
+			case 3:
+				listarPessoas(pessoas);
+				break;
+			case 4:
+				excluirPessoa(pessoas);
+				break;
+			case 5:
+				sair = true;
+				break;
+			default:
+				System.out.println("Opção inválida!");
+				break;
+		
+			}
+		} while(!sair);
 	}
 	
 	public Pessoa cadastrarPessoa(List<Pessoa> pessoas) {
@@ -394,23 +407,26 @@ public class PessoaController {
 
 		return pessoas;
 	}
+	
+	public void excluirPessoa(List<Pessoa> pessoas) {
+			
+			listarPessoas(pessoas);
+			
+			if(pessoas.isEmpty()) {
+				return;
+			}
+			
+			System.out.println("--- EXCLUIR PESSOA ---");
+			
+			System.out.print("Informe o ID do da pessoa para excluir: ");
+			int idPessoa = tec.nextInt();
+					
+			pessoas.remove(idPessoa);
+		}
 
 	public Endereco cadEndereco() {
 		Endereco endereco = new Endereco();
 		return endereco;
-	}
-	public void menu() {
-		System.out.println("---------- MENU ------------");
-		System.out.println("1) Cadastrar pessoa          ");
-		System.out.println("2) Listar pessoas cadastradas");
-		System.out.println("3) Cadastrar produtos");
-		System.out.println("4) Listar produtos");
-		System.out.println("5) Editar produto");
-		System.out.println("6) Excluir produto");
-		System.out.println("7) Editar pessoa");
-		System.out.println("8) Excluir pessoa");
-		System.out.println("9) Sair do sistema");
-		System.out.println("------------------------------");
 	}
 
 }
