@@ -12,7 +12,7 @@ public class ProdutoController {
 	}
 
 	public int leOpcao() {
-		System.out.println("> ");
+		System.out.print("> ");
 		return tec.nextInt();
 	}
 	
@@ -142,34 +142,43 @@ public class ProdutoController {
 	}
 	
 	public void menu(List <Produto> produtos) {
-		System.out.println("\n---------- MENU ------------");
-		System.out.println("|1) Cadastrar produtos");
-		System.out.println("|2) Listar produtos");
-		System.out.println("|3) Editar produto");
-		System.out.println("|4) Excluir produto");
-		System.out.println("------------------------------");
+		
+		boolean sair = false;
+		
+	do {
+			System.out.println("+---------- MENU -----------+");
+			System.out.println("|1) Cadastrar produtos      |");
+			System.out.println("|2) Listar produtos         |");
+			System.out.println("|3) Editar produto          |");
+			System.out.println("|4) Excluir produto         |");
+			System.out.println("|5) Voltar                  |");
+			System.out.println("+---------------------------+");
 
-		int opcao = leOpcao();
+			int opcao = leOpcao();
 
-		switch(opcao) {
-		case 1:
-			cadastrarProduto();
-			break;
+			switch(opcao) {
+			case 1:
+				produtos.add(cadastrarProduto());
+				break;
+			case 2:
+				listarProdutos(produtos);
+				break;
+			case 3:
+				editarProduto(produtos);
+				break;
+			case 4:
+				excluirProduto(produtos);
+				break;
+			case 5:
+				sair = true;
+				break;
+			default:
+				System.out.println("Opção inválida!");
+				break;
+			}
 
-		case 2:
-			listarProdutos(produtos);
-			break;
-
-		case 3:
-			editarProduto(produtos);
-			break;
-
-		case 4:
-			excluirProduto(produtos);
-			break;
-
-		}
+	
+		} while(!sair);
 
 	}
-
 }
